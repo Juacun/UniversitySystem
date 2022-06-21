@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+	
+		<title>Sistema Universitario - Registro</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+	</head>
+
+	<body>
+	
+		<div class="d-flex justify-content-center p-3">
+			<div class="card col-md-5 p-3">
+				<div class="mb-3">
+					<h4>Registrate !</h4>
+				</div>
+				<div class="mb-2">
+				
+					<form th:action="@{/alumno/procesarFormularioRegistro}" th:object="${alumnoNuevo}" method="post">
+					
+						<div class="mb-2">
+							<div class="d-flex justify-content-between"><label for="nombre">Nombre: </label><span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" style="color:red;font-size:12px"></span></div>
+							<input type="text" th:field="*{nombre}" class="form-control" id="nombre" placeholder="Ej: Emilio"/>
+						</div>
+						<div class="mb-2">
+							<div class="d-flex justify-content-between"><label for="apellido">Apellido: </label><span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}" style="color:red;font-size:12px"></span></div>
+							<input type="text" th:field="*{apellido}" class="form-control" id="apellido" placeholder="Ej: Lopez"/>
+						</div>
+						<div class="mb-3">
+							<div class="d-flex justify-content-between"><label for="email">Email: </label><span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red;font-size:12px"></span></div>
+							<input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Ej: Emilio@example.com"/>
+						</div>
+						<div class="mb-3">
+							<div class="d-flex justify-content-between"><label for="genero">Genero: </label><span th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}" style="color:red;font-size:12px"></span></div>
+							<input type="radio" th:field="*{genero}" id="Masculino" value="Masculino"/> Masculino
+							<input type="radio" th:field="*{genero}" id="Femenino"  value="Femenino"/> Femenino
+							<input type="radio" th:field="*{genero}" id="noBinario" value="NoBinario"/> No Binario
+						</div>
+						<div class="mb-2">
+							<div class="d-flex justify-content-between"><label for="dni">DNI: </label><span th:if="${#fields.hasErrors('dni')}" th:errors="*{dni}" style="color:red;font-size:12px"></span></div>
+							<input th:field="*{dni}" class="form-control" id="dni" value ="" placeholder="Ej: 34569321"/>
+						</div>
+						<div class="mb-2">
+							<div class="d-flex justify-content-between"><label for="fechaDeNacimiento">Fecha de Nacimiento: </label><span th:if="${#fields.hasErrors('fechaDeNacimiento')}" th:errors="*{fechaDeNacimiento}" style="color:red;font-size:12px"></span></div>
+							<input type="date" th:field="*{fechaDeNacimiento}" class="form-control" id="fechaDeNacimiento" placeholder="Seleccione una fecha"/>
+						</div>
+						
+						<div class="mt-4">
+							<button class="btn btn-primary">Enviar</button>
+						</div>
+						
+					</form>
+					
+				</div>
+			</div>
+		</div>
+		
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous">
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+		integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
+		</script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+		integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous">
+		</script>
+		
+	</body>
+
+</html>
