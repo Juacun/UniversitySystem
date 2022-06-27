@@ -31,11 +31,11 @@ public class Profesor extends Usuario{
 	public Profesor() {
 	}
 
-	public Profesor(String nombre, String apellido, String genero, String email, int dni, String fechaDeNacimiento, 
+	public Profesor(String nombre, String apellido, String clave, String genero, String email, int dni, String fechaDeNacimiento, 
 			String fechaDeAlta, String fechaDeBaja, String materiasQueEnsenia, String turnosQueTrabaja, String sueldo,
 			int inasistencias, String sanciones) {
 		
-		super(nombre, apellido, genero, email, dni, fechaDeNacimiento);
+		super(nombre, apellido, clave, genero, email, dni, fechaDeNacimiento);
 		this.fechaDeAlta = fechaDeAlta;
 		this.fechaDeBaja = fechaDeBaja;
 		this.materiasQueEnsenia = materiasQueEnsenia;

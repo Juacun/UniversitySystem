@@ -15,12 +15,11 @@ public class Alumno extends Usuario{
 		super();
 	}
 
-	public Alumno(String nombre, String apellido, String genero, String email, int dni, String fechaDeNacimiento) {
-		
-		super(nombre, apellido, genero, email, dni, fechaDeNacimiento);
+	public Alumno(String nombre, String apellido, String genero, String clave, String email, int dni, String fechaDeNacimiento) {
+		super(nombre, apellido, clave, genero, email, dni, fechaDeNacimiento);
 	}
 
-	
+
 	public List<EstudioAlumno> getEstudiosAlumno() {
 		return estudiosAlumno;
 	}

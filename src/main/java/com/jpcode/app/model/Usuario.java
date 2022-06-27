@@ -9,50 +9,56 @@ public abstract class Usuario {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private int id;
+	protected int id;
 	
 	@NotEmpty (message = "Ingrese un nombre valido")
 	@Size (min=2, message = "Longitud minima 2 caracteres")
 	@Column(name = "nombre")
-	private String nombre;
+	protected String nombre;
 	
 	@NotEmpty (message = "Ingrese un apellido valido")
 	@Size (min=2, message = "Longitud minima 2 caracteres")
 	@Column(name = "apellido")
-	private String apellido;
+	protected String apellido;
+	
+	@NotBlank
+	@Size (min=8, message = "Longitud Minima 8 caracteres")
+	@Column(name = "clave")
+	protected String clave;
 	
 	@NotEmpty (message = "Seleccione una opcion")
 	@Column(name = "genero")
-	private String genero;
+	protected String genero;
 	
 	@NotEmpty (message = "Ingrese un email valido")
 	@Pattern(regexp = "^[^@]+@[^@]+\\.[a-zA-Z]{2,}$", message = "Ingrese un formato de email valido")
 	@Column(name = "email")
-	private String email;
+	protected String email;
 	
 	@Min(value = 1, message = "Ingresar un dni valido")
 	@Max(value = 60000000, message = "numero muy alto, Ingrese un dni valido")
 	@Column(name = "dni")
-	private int dni;
+	protected int dni;
 	
 	@NotEmpty (message = "Seleccione una fecha")
 	@Column(name = "fechaDeNacimiento")
-	private String fechaDeNacimiento;
+	protected String fechaDeNacimiento;
 	
 	
 	public Usuario() {
 	}
 	
-	public Usuario(String nombre, String apellido, String genero, String email, int dni, String fechaDeNacimiento) {
+	public Usuario(String nombre, String apellido, String clave, String genero, String email, int dni, String fechaDeNacimiento) {
 		this.nombre = nombre;
 		this.apellido = apellido;
+		this.clave = clave;
 		this.genero = genero;
 		this.email = email;
 		this.dni = dni;
 		this.fechaDeNacimiento = fechaDeNacimiento;
 	}
 
-
+	
 	public int getId() {
 		return id;
 	}
@@ -77,6 +83,14 @@ public abstract class Usuario {
 		this.apellido = apellido;
 	}
 
+	public String getClave() {
+		return clave;
+	}
+
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
+	
 	public String getGenero() {
 		return genero;
 	}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content />
+        <meta name="author" content />
+        <title>Nombre Universidad - Login Alumnos</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
+        <!-- Bootstrap icons-->
+        <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css}" rel="stylesheet" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link th:href="@{/css/styles.css}" rel="stylesheet" />
+    </head>
+    <body class="d-flex flex-column">
+        <main class="flex-shrink-0">
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+                <div class="container px-5">
+                    <a class="navbar-brand" th:href="@{/}">Nombre Universidad</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <li class="nav-item"><a class="nav-link" th:href="@{/inicio}">Inicio</a></li>
+                            <li class="nav-item"><a class="nav-link" th:href="@{/novedades}">Novedades</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" th:href="@{#}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Cursos</a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
+                                    <li><a class="dropdown-item" th:href="@{#}">- Big Data</a></li>
+                                    <li><a class="dropdown-item" th:href="@{#}">- Programacion</a></li>
+                                    <li><a class="dropdown-item" th:href="@{#}">- Criptomonedas</a></li>
+                                    <li><a class="dropdown-item" th:href="@{#}">- Comercio Exterior</a></li>
+                                    <li><a class="dropdown-item" th:href="@{#}">- Adm Consorcio</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdownPortfolio" th:href="@{#}" role="button" data-bs-toggle="dropdown" aria-expanded="false">Carreras</a>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownPortfolio">
+                                    <li><a class="dropdown-item" th:href="@{#}">- Ing Arquitecto</a></li>
+                                    <li><a class="dropdown-item" th:href="@{#}">- Ing Mecanico</a></li>
+                                    <li><a class="dropdown-item" th:href="@{#}">- Ciencias Politicas</a></li>
+                                    <li><a class="dropdown-item" th:href="@{#}">- Doctorado en Medicina</a></li>
+                                    <li><a class="dropdown-item" th:href="@{#}">- Licenciatura en Finanzas</a></li>
+                                    <li><a class="dropdown-item" th:href="@{#}">- Ing en Petroleo</a></li>
+                                    <li><a class="dropdown-item" th:href="@{#}">- Profesorado Superior</a></li>
+                                    <li><a class="dropdown-item" th:href="@{#}">- Ing de Sonido</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item me-3"><a class="nav-link" th:href="@{/contacto}">Contacto</a></li>
+                            <a class="btn btn-outline-warning btn-lg px-1 me-2" style="font-size: 15px;" th:href="@{/staff/login}"><i class="bi bi-briefcase"></i> Area Staff </a>
+                            <a class="btn btn-info btn-lg px-1 me-2" style="font-size: 15px;" th:href="@{/alumno/login}"><i class="bi bi-person"></i> Area Alumnos </a>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            
+            <!-- Page content-->
+            <section class="py-5">
+                <div class="container px-5">
+                    
+                    <div class="d-flex justify-content-center p-3">
+						<div class="card col-md-5 p-3">
+							<div class="mb-3">
+								<h4>Ingresar al area de Alumnos</h4>
+							</div>
+							<div class="mb-2">
+				
+								<form th:action="@{/alumno/procesarFormularioLogin}" th:object="${alumnoLogin}" method="post">
+                    			
+                    				<div class="mb-3">
+										<div class="d-flex justify-content-between"><label for="email">Email: </label><span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red;font-size:12px"></span></div>
+										<input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email del Alumno"/>
+									</div>
+									
+									<div class="mb-2">
+										<div class="d-flex justify-content-between"><label for="clave">Clave: </label><span th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}" style="color:red;font-size:12px"></span></div>
+										<input type="password" th:field="*{clave}" class="form-control" id="clave" placeholder="Contraseña"/>
+									</div>
+									
+									<div class="mt-4 mb-2">
+										<button class="btn btn-primary">Entrar!</button>
+									</div>
+									
+									<a th:href="@{#}"> Olvido su Contraseña?</a>
+									<p>No posee una Cuenta ? <a th:href="@{/alumno/register}">Registrese aqui!</a></p>
+									
+								</form>
+							</div>
+						</div>
+					</div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Footer-->
+        <footer class="bg-dark py-4 mt-auto">
+            <div class="container px-5">
+                <div class="row align-items-center justify-content-between flex-column flex-sm-row">
+                    <div class="col-auto"><div class="small m-0 text-white">Copyright &copy; Your Website 2022</div></div>
+                    <div class="col-auto">
+                        <a class="link-light small" th:href="@{#!}">Privacy</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" th:href="@{#!}">Terms</a>
+                        <span class="text-white mx-1">&middot;</span>
+                        <a class="link-light small" th:href="@{#!}">Contact</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Bootstrap core JS-->
+        <script th:src="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js}"></script>
+        <!-- Core theme JS-->
+        <script th:src="@{/js/scripts.js}"></script>
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script th:src="@{https://cdn.startbootstrap.com/sb-forms-latest.js}"></script>
+    </body>
+</html>
