@@ -44,6 +44,8 @@ public abstract class Usuario {
 	@Column(name = "fechaDeNacimiento")
 	protected String fechaDeNacimiento;
 	
+	@Column(name = "isEstadoActivo")
+	protected boolean isEstadoActivo;
 	
 	public Usuario() {
 	}
@@ -122,5 +124,13 @@ public abstract class Usuario {
 	public void setFechaDeNacimiento(String fechaDeNacimiento) {
 		this.fechaDeNacimiento = fechaDeNacimiento;
 	}
-	
+
+	public boolean isEstadoActivo() {
+		return isEstadoActivo;
+	}
+
+	public void setEstadoActivo(boolean isEstadoActivo) {
+		this.isEstadoActivo = isEstadoActivo;
+	}
+
 }

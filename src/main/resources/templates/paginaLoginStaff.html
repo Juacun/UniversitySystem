@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content />
         <meta name="author" content />
-        <title>Nombre Universidad - Login Alumnos</title>
+        <title>Nombre Universidad - Login Staff</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" th:href="@{/assets/favicon.ico}" />
         <!-- Bootstrap icons-->
@@ -48,8 +48,8 @@
                                 </ul>
                             </li>
                             <li class="nav-item me-3"><a class="nav-link" th:href="@{/contacto}">Contacto</a></li>
-                            <a class="btn btn-outline-warning btn-lg px-1 me-2" style="font-size: 15px;" th:href="@{/staff/login}"><i class="bi bi-briefcase"></i> Area Staff </a>
-                            <a class="btn btn-info btn-lg px-1 me-2" style="font-size: 15px;" th:href="@{/alumno/login}"><i class="bi bi-person"></i> Area Alumnos </a>
+                            <a class="btn btn-warning btn-lg px-1 me-2" style="font-size: 15px;" th:href="@{/staff/login}"><i class="bi bi-briefcase"></i> Area Staff </a>
+                            <a class="btn btn-outline-info btn-lg px-1 me-2" style="font-size: 15px;" th:href="@{/alumno/login}"><i class="bi bi-person"></i> Area Alumnos </a>
                         </ul>
                     </div>
                 </div>
@@ -62,15 +62,15 @@
                     <div class="d-flex justify-content-center p-3">
 						<div class="card col-md-5 p-3">
 							<div class="mb-3">
-								<h4>Ingresar al area de Alumnos</h4>
+								<h4>Ingresar al area de Staff</h4>
 							</div>
 							<div class="mb-2">
 				
-								<form th:action="@{/alumno/procesarFormularioLogin}" th:object="${alumnoLogin}" method="post">
+								<form th:action="@{/staff/procesarFormularioLogin}" th:object="${usuarioStaff}" method="post">
                     			
                     				<div class="mb-3">
 										<div class="d-flex justify-content-between"><label for="email">Email: </label><span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color:red;font-size:12px"></span></div>
-										<input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email del Alumno"/>
+										<input type="text" th:field="*{email}" class="form-control" id="email" placeholder="Email"/>
 									</div>
 									
 									<div class="mb-2">
@@ -78,13 +78,20 @@
 										<input type="password" th:field="*{clave}" class="form-control" id="clave" placeholder="Contraseña"/>
 									</div>
 									
+									<div class="mb-3">
+										<div class="d-flex justify-content-between"><label for="genero">Genero: </label><span th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}" style="color:red;font-size:12px"></span></div>
+										<input type="radio" th:field="*{genero}" id="Masculino" value="Masculino"/> Profesor
+										<input type="radio" th:field="*{genero}" id="Femenino"  value="Femenino"/> Director
+										<input type="radio" th:field="*{genero}" id="noBinario" value="NoBinario"/> Adm Sistema
+									</div>
+									
 									<div class="mt-4 mb-2 d-flex justify-content-between">
-										<button class="btn btn-info">Entrar!</button>
+										<button class="btn btn-warning">Entrar!</button>
 										<div><input type="checkbox"> Recordarme <br></div>
 									</div>
 									
 									<a th:href="@{#}"> Olvido su Contraseña?</a>
-									<p>No posee una Cuenta ? <a th:href="@{/alumno/register}">Registrese aqui!</a></p>
+									<!-- <p>No posee una Cuenta ? <a th:href="@{/alumno/register}">Registrese aqui!</a></p> -->
 									
 								</form>
 							</div>

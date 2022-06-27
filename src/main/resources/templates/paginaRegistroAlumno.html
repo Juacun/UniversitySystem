@@ -66,7 +66,7 @@
 							</div>
 							<div class="mb-2">
 				
-								<form th:action="@{/alumno/procesarFormularioRegistro}" th:object="${alumnoNuevo}" method="post">
+								<form th:action="@{/alumno/procesarFormularioRegister}" th:object="${alumnoNuevo}" method="post">
 					
 									<div class="mb-2">
 										<div class="d-flex justify-content-between"><label for="nombre">Nombre: </label><span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}" style="color:red;font-size:12px"></span></div>
@@ -82,7 +82,7 @@
 									</div>
 									<div class="mb-2">
 										<div class="d-flex justify-content-between"><label for="clave">Clave: </label><span th:if="${#fields.hasErrors('clave')}" th:errors="*{clave}" style="color:red;font-size:12px"></span></div>
-										<input type="password" th:field="*{clave}" class="form-control" id="clave" placeholder="Ej: Emilio"/>
+										<input type="password" th:field="*{clave}" class="form-control" id="clave" placeholder="Ej: clave123"/>
 									</div>
 									<div class="mb-3">
 										<div class="d-flex justify-content-between"><label for="genero">Genero: </label><span th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}" style="color:red;font-size:12px"></span></div>

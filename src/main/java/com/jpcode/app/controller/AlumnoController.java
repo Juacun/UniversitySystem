@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.jpcode.app.model.Alumno;
 import com.jpcode.app.model.Usuario;
-import com.jpcode.app.model.UsuarioLogin;
 import com.jpcode.app.service.IUsuarioService;
 
 @Controller
@@ -23,6 +22,12 @@ public class AlumnoController {
 
 	@Autowired
 	private IUsuarioService usuarioService;
+	
+	@RequestMapping("/home")
+	public String muestraPaginaHomeAlumno( ) {
+		
+		return "paginaHomeAlumno";
+	}
 	
 	@RequestMapping("/login")
 	public String muestraPaginaLoginAlumno(Model modelo) {
@@ -39,11 +44,10 @@ public class AlumnoController {
 		
 		if (resultadoValidacion.hasErrors()) {
 
-			return "formularioRegistroAlumno";
+			return "paginaLoginAlumno";
 		} else {
 			
-			usuarioService.save(alumnoLogin);
-			return "paginaInicioAlumno";
+			return "paginaHomeAlumno";
 		}
 	}
 	
@@ -56,13 +60,13 @@ public class AlumnoController {
 		return "paginaRegistroAlumno";
 	}
 
-	@RequestMapping("/procesarFormularioRegistro")
+	@RequestMapping("/procesarFormularioRegister")
 	public String procesaFormularioRegistroAlumno(@Valid @ModelAttribute("alumnoNuevo") Alumno alumnoNuevo,
 			BindingResult resultadoValidacion) {
 		
 		if (resultadoValidacion.hasErrors()) {
 
-			return "formularioRegistroAlumno";
+			return "paginaRegistroAlumno";
 		} else {
 			
 			usuarioService.save(alumnoNuevo);
